@@ -6,7 +6,7 @@ const routes = [
     path: '/',
     component: HomePage,
     meta: {
-      title: 'VueSSR'
+      title: 'TimeCalendar'
     }
   }
 ]
