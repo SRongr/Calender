@@ -7,7 +7,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 const config = require('../config')
 const postcssConfig = require('./postcss.config')
 const isProd = process.env.NODE_ENV === 'production'
-
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   devtool: isProd
@@ -90,6 +90,10 @@ module.exports = {
   },
   plugins: isProd
     ? [
+        new HtmlWebpackPlugin({
+          filename: 'index.html',
+          template: 'src/index.template.html'
+        }),
         new VueLoaderPlugin(),
         //压缩js
         new UglifyJsPlugin({
@@ -111,6 +115,10 @@ module.exports = {
         })
       ]
     : [
+        new HtmlWebpackPlugin({
+          filename: 'index.html',
+          template: 'src/index.template.html'
+        }),
         new VueLoaderPlugin(),
         new FriendlyErrorsPlugin()
       ]
