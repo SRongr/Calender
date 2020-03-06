@@ -20,6 +20,10 @@ const serverInfo =
 const app = express()
 app.set('view engine', 'pug');
 
+app.get('/service-worker.js', function (req, res) {
+  res.set({ 'Content-Type': 'application/javascript; charset=utf-8' });
+  res.send(fs.readFileSync('build/service-worker.js'));
+});
 
 //favicon
 app.use(favicons(resolve('./public/icons'), {
@@ -138,7 +142,13 @@ app.get('*', isProd ? render : (req, res) => {
   readyPromise.then(() => render(req, res))
 })
 
-const port = 8081
+app.get('service-worker.js', function (req, res) {
+  console.log(1231231312)
+  res.set({ 'Content-Type': 'application/javascript; charset=utf-8' });
+  res.send(fs.readFileSync('build/service-worker.js'));
+});
+
+const port = 8080
 app.listen(port, () => {
   console.log(`server started at localhost:${port}`)
 })

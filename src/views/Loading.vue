@@ -30,7 +30,6 @@ export default {
 	},
 	watch: {
 		resources (value) {
-      console.log(value)
 			this.resources = value
 			if (this.resources.length) {
 				const timer = setTimeout(() => {
@@ -53,21 +52,18 @@ export default {
 			preload.loadManifest(this.resources)
 		},
 		handleFileLoad (e) {
-			console.log(e)
 			if (e.item.type === 'sound') {
-				console.log('音乐加载完成：' + e.item.src)
+				console.log('音乐加载完成：')
 			}
 		},
 		handleFileProgress (e) {
 			this.progress = Math.floor(e.progress * 100)
 		},
 		loadComplete (e) {
-			console.log(e)
 			console.log('已加载完毕全部资源')
 			this.$emit('complete', 1,1000)
 		},
 		loadError (e) {
-			console.log(e)
 			console.log('加载出错')
 		}
 	}

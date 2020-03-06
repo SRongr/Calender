@@ -129,14 +129,12 @@ export default {
     },
     slideToContent (index, dalay = 2000, duration = 2000) {
       if (!this.audioInit && index == 2) {
-        console.log('lai')
         this.audioInit = true
         this.audio = document.querySelector('#contentAudio')
         this.audio.autoplay = true
         this.audio.loop = 'loop'
         this.audio.play()
       }
-      console.log(index, this.mySwiper)
       setTimeout( () => {
         this.goOn = false
         this.mySwiper.allowSlideNext = true

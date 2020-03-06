@@ -3,7 +3,7 @@ import App from './App.vue'
 import { createStore } from './store'
 import { createRouter } from './router'
 import { sync } from 'vuex-router-sync'
-
+import './service-worker'
 
 
 // Expose a factory function that creates a fresh set of store, router,
